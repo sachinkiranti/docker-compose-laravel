@@ -20,6 +20,8 @@ services:
 
   mysql:
     image: mysql:5.7.29
+    volumes:
+      - ./build/db/mysql/:/var/lib/mysql
     restart: unless-stopped
     tty: true
     ports:
