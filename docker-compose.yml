@@ -46,3 +46,21 @@ services:
       - "9000:9000"
     networks:
       - laravel
+
+  phpmyadmin:
+    image: phpmyadmin/phpmyadmin:latest
+    restart: always
+    ports:
+      - "80:80"
+    depends_on:
+      - mysql
+    environment:
+      PMA_ARBITRARY: 1
+      PMA_HOST: mysql
+      PMA_PORT: 3306
+      MYSQL_USER: homestead
+      MYSQL_PASSWORD: secret
+    networks:
+      - laravel
+    volumes:
+      - ./docker/phpmyadmin
