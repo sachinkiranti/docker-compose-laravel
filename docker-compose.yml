@@ -64,3 +64,13 @@ services:
       - laravel
     volumes:
       - ./docker/phpmyadmin
+
+  composer:
+    image: composer:latest
+    volumes:
+      - ./src:/var/www/html
+    working_dir: /var/www/html
+    depends_on:
+      - php
+    networks:
+      - laravel
